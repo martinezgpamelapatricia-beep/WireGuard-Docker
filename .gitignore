@@ -1,0 +1,7 @@
+# Archivos de configuracion y claves privadas de WireGuard
+config/
+*.conf
+*.key
+
+# Archivos temporales
+*.log

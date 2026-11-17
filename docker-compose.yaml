@@ -1,8 +1,6 @@
-version: '3.7'
-
 services:
   wireguard:
-    image: linuxserver/wireguard
+    image: lscr.io/linuxserver/wireguard:latest
     container_name: wireguard
     cap_add:
       - NET_ADMIN
@@ -10,16 +8,15 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Mendoza
-      - SERVERURL= #pon aqui tu ip
-      - SERVERPORT=51820 #optional
-      - PEERS=2 #optional
-      - PEERDNS=auto #optional
-      - INTERNAL_SUBNET=10.13.13.0 #optional
+      - TZ=America/Mexico_City
+      - SERVERURL=192.168.1.68
+      - SERVERPORT=51820
+      - PEERS=2
+      - PEERDNS=auto
+      - INTERNAL_SUBNET=10.13.13.0
     volumes:
-      - /root/wireguard:/config
-      - /lib/modules:/lib/modules
-      - /usr/src:/usr/src
+      - ./config:/config
+      - /lib/modules:/lib/modules:ro
     ports:
       - 51820:51820/udp
     sysctls:
